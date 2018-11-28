@@ -24,6 +24,8 @@ then
     rm -rf redis-${REDIS_VERSION}/debian/patches
     cp -fv /home/user/control redis-${REDIS_VERSION}/debian/
     cp -fv /home/user/changelog redis-${REDIS_VERSION}/debian/
+    # В Ubuntu 16.04 существует бинарник redis-check-dump, которого в новой версии нет, но зато появился redis-check-rd
+    sed -i 's@src/redis-check-dump@src/redis-check-rdb@g' redis-${REDIS_VERSION}/debian/redis-tools.install
     cd redis-${REDIS_VERSION}/
 
     /usr/bin/debuild -b -uc -us &
