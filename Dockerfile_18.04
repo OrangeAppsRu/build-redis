@@ -4,9 +4,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV REDIS_VERSION 5.0.2
 ENV DEB_VERSION_MAIN 4.0.9
 ENV DEB_VERSION_ADD 1
-
-ENV REDIS_ARCHIVE redis-${REDIS_VERSION}.tar.gz
-ENV REDIS_URL http://download.redis.io/releases/${REDIS_ARCHIVE}
 ENV DEB_VERSION 5:${DEB_VERSION_MAIN}-${DEB_VERSION_ADD}
 
 RUN sed  -i 's/# deb-src/deb-src/g' /etc/apt/sources.list && \

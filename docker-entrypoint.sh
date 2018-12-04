@@ -6,6 +6,9 @@ function traping() {
     wait $PID
 }
 
+REDIS_ARCHIVE=redis-${REDIS_VERSION}.tar.gz
+REDIS_URL=http://download.redis.io/releases/${REDIS_ARCHIVE}
+
 if [[ ${1} == 'build' ]]
 then
     mkdir -p /home/user/build
