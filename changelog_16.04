@@ -1,9 +1,3 @@
-redis (2:5.0.2-1) unstable; urgency=medium
-
-  * up to version 5.0.2
-
- -- Dmitry Sergeev <identw@gmail.com>  Wed, 29 Nov 2018 15:32:00 +0500
-
 redis (2:3.0.6-1) unstable; urgency=medium
 
   * New upstream release.

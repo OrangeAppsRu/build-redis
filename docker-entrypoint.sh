@@ -8,6 +8,14 @@ function traping() {
 
 REDIS_ARCHIVE=redis-${REDIS_VERSION}.tar.gz
 REDIS_URL=http://download.redis.io/releases/${REDIS_ARCHIVE}
+date=`LC_ALL=en_US.utf8 date +%a', '%d' '%b' '%Y' '%H:%M:%S' '%z`
+changelog="redis (5:${REDIS_VERSION}-1) unstable; urgency=medium
+
+  * up to version ${REDIS_VERSION}
+
+ -- Dmitry Sergeev <identw@gmail.com>  ${date}
+
+"
 
 if [[ ${1} == 'build' ]]
 then
@@ -26,7 +34,9 @@ then
     mv debian redis-${REDIS_VERSION}/
     rm -rf redis-${REDIS_VERSION}/debian/patches
     cp -fv /home/user/control redis-${REDIS_VERSION}/debian/
-    cp -fv /home/user/changelog redis-${REDIS_VERSION}/debian/
+    printf "${changelog}" > /tmp/changelog
+    cat /home/user/changelog >> /tmp/changelog
+    cp -fv /tmp/changelog redis-${REDIS_VERSION}/debian/
     # В Ubuntu 16.04 существует бинарник redis-check-dump, которого в новой версии нет, но зато появился redis-check-rd
     sed -i 's@src/redis-check-dump@src/redis-check-rdb@g' redis-${REDIS_VERSION}/debian/redis-tools.install
     cd redis-${REDIS_VERSION}/
