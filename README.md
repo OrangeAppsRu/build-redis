@@ -47,3 +47,38 @@ docker pull tapclap/redis-build:ubuntu16.04
 ```
 
 Теперь последующие сборки, будут создавать пакеты с новым описанием.
+
+## Сборка образов вручную
+Также можно собрать образы самому, а затем запушить на hub.docker.com
+
+Для образа, который будет собирать пакеты для Ubuntu16.04:
+```bash
+docker build -t redis-build:ubuntu16.04 -f ./Dockerfile_16.04 ./
+
+```
+
+Для образа, который будет собирать пакеты для Ubuntu18.04:
+```bash
+docker build -t redis-build:ubuntu18.04 -f ./Dockerfile_18.04 ./
+
+```
+
+Теперь у Вас есть локально собранные образы, и Вы можете собирать пакеты **redis** с помощью них:
+```bash
+mkdir build
+chmod 777 build
+docker run --rm -v $PWD/build:/home/user/build redis-build:ubuntu16.04 build
+```
+
+### Пуш локально созданных образов на hub.docker.com
+Создайте тэг, который укажет что образ принадлежит аккаунту **tapclap**.
+```bash
+docker tag redis-build:ubuntu16.04 tapclap/redis-build:ubuntu16.04
+docker tag redis-build:ubuntu18.04 tapclap/redis-build:ubuntu18.04
+
+```
+Пуш
+```bash
+docker push tapclap/redis-build:ubuntu16.04
+docker push tapclap/redis-build:ubuntu18.04
+```
