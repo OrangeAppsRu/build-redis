@@ -32,6 +32,7 @@ WORKDIR /home/user
 
 COPY --chown=user:user control_18.04 /home/user/control
 COPY --chown=user:user changelog_18.04 /home/user/changelog
+COPY --chown=user:user redis.conf /home/user/redis.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 COPY Dockerfile_18.04 /Dockerfile
 

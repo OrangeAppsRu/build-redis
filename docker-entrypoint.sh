@@ -34,6 +34,7 @@ then
     mv debian redis-${REDIS_VERSION}/
     rm -rf redis-${REDIS_VERSION}/debian/patches
     cp -fv /home/user/control redis-${REDIS_VERSION}/debian/
+    cp -fv /home/user/redis.conf redis-${REDIS_VERSION}/debian/redis-server/etc/redis/redis.conf
     printf "${changelog}" > /tmp/changelog
     cat /home/user/changelog >> /tmp/changelog
     cp -fv /tmp/changelog redis-${REDIS_VERSION}/debian/
