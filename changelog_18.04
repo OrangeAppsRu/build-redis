@@ -1,8 +1,27 @@
-redis (5.0.7-1)
+redis (5:4.0.9-1ubuntu0.2) bionic-security; urgency=medium
 
-  * redis 5.0.7 version
+  * SECURITY UPDATE: heap buffer overflows in Hyperloglog (Closes: #1836496)
+    - debian/patches/CVE-2019-10192.patch: Fix hyperloglog corruption
+    - CVE-2019-10192
 
- -- Dmitry Sergeev <identw@gmail.com>  Thu, 09 Jan 2020 13:22:36 +0500
+ -- Julian Andres Klode <juliank@ubuntu.com>  Sun, 14 Jul 2019 21:20:08 +0200
+
+redis (5:4.0.9-1ubuntu0.1) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: Memory corruption
+    - debian/patches/CVE-2018-11218.patch: fix in
+      deps/lua/src/lua_cmsgpack.c.
+    - CVE-2018-11218
+  * SECURITY UPDATE: Integer Overflow
+    - debian/patches/CVE-2018-11219-*.patch: fix in
+      deps/lua/src/lua_struct.c.
+    - CVE-2018-11219
+  * SECURITY UPDATE: Buffer overflow in the redis-cli
+    - debian/patches/CVE-2018-12326.patch: fix in
+      redis-cli.c.
+    - CVE-2018-12326
+
+ -- Julian Andres Klode <juliank@ubuntu.com>  Thu, 29 Nov 2018 11:37:34 +0100
 
 redis (5:4.0.9-1) unstable; urgency=medium
 

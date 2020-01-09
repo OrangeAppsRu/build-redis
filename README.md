@@ -40,6 +40,12 @@ docker run --rm -v $PWD/build:/home/user/build --env 'REDIS_VERSION=5.0.1' tapcl
 
 Просто добавьте, то что вам требуется и запуште изминения в репозиторий. Образы пересоберутся по тригеру.
 
+**Заметьте**: docker-entrypoint в changelog тоже добавляет описание поверх тех, что уже лежат в репозитории, во время сборки. То есть в changelog следует добавлять напирмер обновления из changelog официального пакета. Посмотреть его можно таким образом:
+```bash
+# Нужно чтобы redis-server был установлен из официальной репы
+apt-get changelog redis-server
+```
+
 Обновите образы:
 ```bash
 docker pull tapclap/redis-build:ubuntu18.04
